@@ -1,11 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!--Header containing title and linking in bootstrap CSS-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
+
 <body>
-    
+    <div class="header pt-3 pl-3 bg-dark text-light">
+            <h1 class="text-center">Weather Dashboard</h1>
+        <div class="row mt-5 bg-light">
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <form id="search-form">
+                            <div class="form-group">
+                                <label class="text-dark font-weight-bold" for="search-input"><h2>Search for a city:</h2></label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="search-input" placeholder="e.g. Kalamazoo">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="submit">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- This is the box area that includes all city boxes clickable to display the weather-->
+                        <h2 class="card-title h4">Cities</h2>
+                        <h3 class="card-subtitle h6 font-weight-normal mb-3 text-muted">Click on a city to view the weather</h3>
+                        <button data-city="Austin" class="city btn btn-outline-dark btn-block" id="cityBtn">
+                            Austin
+                        </button>
+                        <button data-city="Chicago" class="city btn btn-outline-dark btn-block" id="cityBtn">
+                            Chicago
+                        </button>
+                        <button data-city="New York" class="city btn btn-outline-dark btn-block" id="cityBtn">
+                            New York
+                        </button>
+                        <button data-city="Orlando" class="city btn btn-outline-dark btn-block" id="cityBtn">
+                            Orlando
+                        </button>
+                        <button data-city="San Francisco" class="city btn btn-outline-dark btn-block" id="cityBtn">
+                            San Francisco
+                        </button>
+                        <button data-city="Seattle" class="city btn btn-outline-dark btn-block" id="cityBtn">
+                            Seattle
+                        </button>
+                        <button data-city="Denver" class="city btn btn-outline-dark btn-block" id="cityBtn">
+                            Denver
+                        </button>
+                        <button data-city="Atlanta" class="city btn btn-outline-dark btn-block" id="cityBtn">
+                            Atlanta
+                        </button>
+                        <hr>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card weather-card outline-dark text-dark mb-3 mt-3">
+                    <div class="card-body mt-2">
+                        <h2 id="city-name" class="card-title h4">Choose City</h2>
+                        <hr class="border-top border-light">
+                        <div id="weather-icon"></div>
+                        <p class="card-text">Current Temp (F): <span id="temp">-</span></p>
+                        <p class="card-text">Wind: <span id="wind">-</span></p>
+                        <p class="card-text">Humidity: <span id="humidity">-</span></p>
+                        <div class="card-text">Description: <span id="description">-</span></div>
+                    </div>
+                </div>
+
+                <div class="card weather-card outline-dark text-dark">
+                    <div class="container-fluid">
+                        <h4 class="p-1">
+                            5-Day Forecast:
+                        </h4>
+                        <div class="d-flex p-1">
+                            <div class="card block text-white bg-primary m-3" style="Width:160px;height:180px">
+                                <div class="dayOne forecast-card p-2">
+                                    <p class="card-text text-white" id="date1"></p>
+                                    <p class="card-text text-white" id="icon1"></p>
+                                    <p class="temp" id="temp1"></p>
+                                    <p class="humidity" id="humid1"></p>
+                                </div>
+                            </div> 
+                        
+                            <div class="card block text-white bg-primary m-3" style="Width:160px;height:180px">
+                                <div class="dayTwo forecast-card p-2">
+                                    <p class="card-text text-white" id="date2"></p>
+                                    <p class="card-text text-white" id="icon2"></p>
+                                    <p class="temp" id="temp2"></p>
+                                    <p class="humidity" id="humid2"></p>
+                                </div>
+                        </div>
+                        <div class="card block text-white bg-primary m-3" style="Width:160px;height:180px">
+                                <div class="dayThree forecast-card p-2">
+                                    <p class="card-text text-white" id="date3"></p>
+                                    <p class="card-text text-white" id="icon3"></p>
+                                    <p class="temp" id="temp3"></p>
+                                    <p class="humidity" id="humid3"></p>
+                                </div>
+                        </div>
+                        <div class="card block text-white bg-primary m-3" style="Width:160px;height:180px">
+                                <div class="dayFour forecast-card p-2">
+                                    <p class="card-text text-white" id="date4"></p>
+                                    <p class="card-text text-white" id="icon4"></p>
+                                    <p class="temp" id="temp4"></p>
+                                    <p class="humidity" id="humid4"></p>
+                                </div>
+                        </div>
+                        <div class="card block text-white bg-primary m-3" style="Width:160px;height:180px">
+                                <div class="dayFive forecast-card p-2">
+                                    <p class="card-text text-white" id="date5"></p>
+                                    <p class="card-text text-white" id="icon5"></p>
+                                    <p class="temp" id="temp5"></p>
+                                    <p class="humidity" id="humid5"></p>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
